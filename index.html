@@ -21,6 +21,35 @@
 
             <!-- modal starts -->
             <section x-show.transition="$store.signUp.step === 'complete'">
+
+                <div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
+                    <div>
+                        <svg x-show="$store.signUp.status == 'Registration Successful'"
+                            class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                        <svg x-show="$store.signUp.status == 'Registration Failed'"
+                            class="mb-4 h-20 w-20 text-red-500 mx-auto" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 3.752l-4.423-3.752-7.771 9.039-7.647-9.008-4.159 4.278c2.285 2.885 5.284 5.903 8.362 8.708l-8.165 9.447 1.343 1.487c1.978-1.335 5.981-4.373 10.205-7.958 4.304 3.67 8.306 6.663 10.229 8.006l1.449-1.278-8.254-9.724c3.287-2.973 6.584-6.354 8.831-9.245z" />
+                        </svg>
+
+                        <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold"1 x-text="$store.signUp.status">
+                        </h2>
+
+                        <div class="text-gray-600 mb-8 text-center" x-text="$store.signUp.message">
+                        </div>
+
+                        <button @click="location.reload()" class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg 
+            shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 
+            font-medium border" x-text="$store.signUp.buttonText">
+                        </button>
+                    </div>
+                </div>
             </section>
             <!-- modal ends -->
 
@@ -101,9 +130,15 @@
                                 Click to add profile picture
                             </div>
 
-                            <input name="photo" id="fileInput" accept="image/*" class="hidden" type="file" @change="let reader = new FileReader();
-          reader.onload = (e) => $store.signUp.formData.image = e.target.result;
-          reader.readAsDataURL($refs.img.files[0]);">
+                            <input 
+                            name="photo" 
+                            id="fileInput" 
+                            accept="image/*" 
+                            class="hidden" 
+                            type="file" 
+                            x-ref="img"
+                            @change="let reader = new FileReader(); reader.onload = (e) => $store.signUp.formData.image = e.target.result;
+                                reader.readAsDataURL($refs.img.files[0]);">
                         </div>
 
                         <div class="mb-5">
