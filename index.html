@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+        href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" 
+        rel="stylesheet"
+    >
+    <title>Document</title>
+    <style>
+      [x-cloak] { display: none !important; }
+    </style>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body class="antialiased sans-serif bg-gray-200">
+    <div x-data x-cloak>
+        <div class="max-w-3xl mx-auto px-4 py-10">
+
+          <!-- modal starts --> 
+          <section x-show.transition="$store.signUp.step === 'complete'">
+          </section>
+          <!-- modal ends --> 
+
+          <!-- multi form starts --> 
+          <section x-show.transition="$store.signUp.step !== 'complete'">
+            <!-- Top Navigation starts -->
+            <!-- Top Navigation ends -->
+
+            <!-- step content starts -->
+            <!-- step content ends -->
+          </section>
+          <!-- multi form ends --> 
+
+          <!-- Bottom Navigation starts -->
+          <section 
+              class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" 
+              x-show="$store.signUp.step !== 'complete'">
+              <!-- nav starts -->
+              <!-- nav ends -->
+          </section>
+          <!-- Bottom Navigation ends -->
+
+        </div>
+    </div>
+
+
+<script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('signUp', {
+          step: 1,
+          passwordStrengthText: '',
+          togglePassword: false,
+          isError: false,
+          status: "",
+          message: "",
+          buttonText: "Back to home",
+  
+          formData: {
+            image: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGNpcmNsZSBjeD0iMTIiIGN5PSI4IiBmaWxsPSIjNDY0NjQ2IiByPSI0Ii8+PHBhdGggZD0iTTIwLDE5djFhMSwxLDAsMCwxLTEsMUg1YTEsMSwwLDAsMS0xLTFWMTlhNiw2LDAsMCwxLDYtNmg0QTYsNiwwLDAsMSwyMCwxOVoiIGZpbGw9IiM0NjQ2NDYiLz48L3N2Zz4=',
+            username: '',
+            email: '',
+            password: '',
+            gender: 'Male',
+            profession: ''
+        },    
+      });
+    });
+  </script>
+  </body>
+</html>
